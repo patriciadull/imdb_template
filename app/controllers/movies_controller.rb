@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
   end
 
   def show
+    @role = Role.new
     @movie = Movie.find(params.fetch("id_to_display"))
 
     render("movie_templates/show.html.erb")
@@ -31,6 +32,25 @@ class MoviesController < ApplicationController
       @movie.save
 
       redirect_back(:fallback_location => "/movies", :notice => "Movie created successfully.")
+    else
+      render("movie_templates/new_form_with_errors.html.erb")
+    end
+  end
+
+  def create_row_from_director
+    @movie = Movie.new
+
+    @movie.title = params.fetch("title")
+    @movie.year = params.fetch("year")
+    @movie.duration = params.fetch("duration")
+    @movie.description = params.fetch("description")
+    @movie.image = params.fetch("image")
+    @movie.director_id = params.fetch("director_id")
+
+    if @movie.valid?
+      @movie.save
+
+      redirect_to("/directors/#{@movie.director_id}", notice: "Movie created successfully.")
     else
       render("movie_templates/new_form_with_errors.html.erb")
     end

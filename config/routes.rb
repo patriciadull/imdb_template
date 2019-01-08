@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   # CREATE
   get("/roles/new", { :controller => "roles", :action => "new_form" })
   post("/create_role", { :controller => "roles", :action => "create_row" })
+  post("/create_role_from_actor", { :controller => "roles", :action => "create_row_from_actor" })
+  post("/create_role_from_movie", { :controller => "roles", :action => "create_row_from_movie" })
 
   # READ
   get("/roles", { :controller => "roles", :action => "index" })
@@ -75,6 +77,7 @@ Rails.application.routes.draw do
   # CREATE
   get("/movies/new", { :controller => "movies", :action => "new_form" })
   post("/create_movie", { :controller => "movies", :action => "create_row" })
+  post("/create_movie_from_director", { :controller => "movies", :action => "create_row_from_director" })
 
   # READ
   get("/movies", { :controller => "movies", :action => "index" })
