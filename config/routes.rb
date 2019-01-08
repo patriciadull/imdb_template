@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   # DELETE
   get("/delete_role/:id_to_remove", { :controller => "roles", :action => "destroy_row" })
+  get("/delete_role_from_actor/:id_to_remove", { :controller => "roles", :action => "destroy_row_from_actor" })
+  get("/delete_role_from_movie/:id_to_remove", { :controller => "roles", :action => "destroy_row_from_movie" })
 
   #------------------------------
 
@@ -84,6 +86,7 @@ Rails.application.routes.draw do
 
   # DELETE
   get("/delete_movie/:id_to_remove", { :controller => "movies", :action => "destroy_row" })
+  get("/delete_movie_from_director/:id_to_remove", { :controller => "movies", :action => "destroy_row_from_director" })
 
   #------------------------------
 
